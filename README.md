@@ -155,3 +155,10 @@ This reference implementation is checked in GitHub Actions. CI runs the TypeScri
 - [Case study](docs/case-study.md)
 - [Architecture decisions](docs/adr/README.md)
 - [Reliability and recovery](docs/reliability-recovery.md)
+
+## Operations Deep Dive
+
+- [Observability and service signals](docs/observability.md)
+- [Incident runbook](docs/runbook.md)
+- [Example incident scenario](docs/incident-scenario.md)
+- [Metrics catalog](examples/metrics-catalog.json)
