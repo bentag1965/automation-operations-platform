@@ -149,3 +149,9 @@ This is a portfolio-safe implementation. It does not contain production credenti
 ## Validation
 
 This reference implementation is checked in GitHub Actions. CI runs the TypeScript test suite and strict type-checking on pushes and pull requests to `main`.
+
+## Architecture Deep Dive
+
+- [Case study](docs/case-study.md)
+- [Architecture decisions](docs/adr/README.md)
+- [Reliability and recovery](docs/reliability-recovery.md)
