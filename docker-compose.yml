@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: automation
+      POSTGRES_USER: automation
+      POSTGRES_PASSWORD: automation
+    ports:
+      - "5432:5432"
+    volumes:
+      - automation_pgdata:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U automation -d automation"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build: .
+    command: npm run start:api
+    environment:
+      DATABASE_URL: postgresql://automation:automation@db:5432/automation
+      PORT: "3000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  worker:
+    build: .
+    command: npm run start:worker
+    environment:
+      DATABASE_URL: postgresql://automation:automation@db:5432/automation
+      WORKER_POLL_MS: "1500"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  automation_pgdata:
