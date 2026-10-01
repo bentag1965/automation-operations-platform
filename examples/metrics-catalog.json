@@ -1,0 +1,11 @@
+{
+  "metrics": [
+    {"name":"workflow_queue_depth","type":"gauge","description":"Current queued workflow count."},
+    {"name":"workflow_oldest_queued_age_seconds","type":"gauge","description":"Age of oldest queued workflow."},
+    {"name":"workflow_retries_total","type":"counter","description":"Workflow retry attempts by adapter and workflow type."},
+    {"name":"workflow_dead_letter_total","type":"counter","description":"Workflows moved to dead-letter state."},
+    {"name":"workflow_completion_seconds","type":"histogram","description":"End-to-end workflow completion time."},
+    {"name":"approval_wait_seconds","type":"histogram","description":"Time workflows spend awaiting human approval."},
+    {"name":"adapter_request_latency_ms","type":"histogram","description":"External adapter request latency."}
+  ]
+}
