@@ -1,0 +1,9 @@
+{
+  "source": "portfolio-demo",
+  "eventId": "demo-event-001",
+  "eventType": "demo.process",
+  "approvalRequired": false,
+  "payload": {
+    "message": "Hello from the local workflow demo"
+  }
+}
