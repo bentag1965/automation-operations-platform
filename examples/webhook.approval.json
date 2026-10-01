@@ -1,0 +1,9 @@
+{
+  "source": "portfolio-demo",
+  "eventId": "demo-approval-001",
+  "eventType": "demo.high-risk-action",
+  "approvalRequired": true,
+  "payload": {
+    "message": "This workflow waits for explicit approval"
+  }
+}
