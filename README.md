@@ -162,3 +162,11 @@ This reference implementation is checked in GitHub Actions. CI runs the TypeScri
 - [Incident runbook](docs/runbook.md)
 - [Example incident scenario](docs/incident-scenario.md)
 - [Metrics catalog](examples/metrics-catalog.json)
+
+## Production Automation Experience
+
+The reference architecture is informed by a larger Make-based automation estate with live publishing, AI-generation, media-production, API-shell, synchronization, approval, and audit workflows.
+
+- [Make orchestration case study](docs/make-orchestration-case-study.md)
+- [AI-assisted content pipeline case study](docs/ai-content-pipeline-case-study.md)
+- [Sanitized orchestration pattern catalog](examples/orchestration-patterns.json)
