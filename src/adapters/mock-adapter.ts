@@ -1,32 +1,25 @@
-export interface OperationCommand {
-  operation: string;
-  data: Record<string, unknown>;
+export interface AdapterResult {
+  accepted: boolean;
+  externalId: string;
+  echoedPayload: unknown;
 }
 
-export interface OperationResult {
-  externalId?: string;
-  status: "accepted" | "completed";
-  data?: Record<string, unknown>;
-}
+export class MockIntegrationAdapter {
+  async execute(payload: Record<string, unknown>): Promise<AdapterResult> {
+    if (payload.failMode === "transient") {
+      throw new Error("transient mock dependency failure");
+    }
 
-export interface IntegrationAdapter {
-  readonly name: string;
-  execute(command: OperationCommand): Promise<OperationResult>;
-}
+    if (payload.failMode === "permanent") {
+      throw new Error("permanent mock dependency rejection");
+    }
 
-export class MockAdapter implements IntegrationAdapter {
-  readonly name = "mock";
-
-  async execute(command: OperationCommand): Promise<OperationResult> {
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
     return {
-      externalId: "example-" + Date.now(),
-      status: "completed",
-      data: {
-        operation: command.operation,
-        referenceImplementation: true,
-      },
+      accepted: true,
+      externalId: `mock-${Date.now()}`,
+      echoedPayload: payload,
     };
   }
 }
