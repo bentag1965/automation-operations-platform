@@ -145,4 +145,7 @@ This is a portfolio-safe implementation. It does not contain production credenti
 - Metrics and health endpoints
 - Correlation IDs
 - OpenTelemetry examples
-- Unit and integration tests
+
+## Validation
+
+This reference implementation is checked in GitHub Actions. CI runs the TypeScript test suite and strict type-checking on pushes and pull requests to `main`.
