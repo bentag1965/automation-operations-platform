@@ -170,3 +170,8 @@ The reference architecture is informed by a larger Make-based automation estate 
 - [Make orchestration case study](docs/make-orchestration-case-study.md)
 - [AI-assisted content pipeline case study](docs/ai-content-pipeline-case-study.md)
 - [Sanitized orchestration pattern catalog](examples/orchestration-patterns.json)
+
+## Cross-Platform Workflow Engineering
+
+- [Make vs. TypeScript dispatcher](docs/make-vs-code-dispatcher.md)
+- [AI workflow engineering: Notion + ChatGPT + Claude + Make](docs/ai-workflow-engineering.md)
