@@ -1,0 +1,11 @@
+{
+  "source": "example-system",
+  "eventId": "evt_123456",
+  "eventType": "content.ready",
+  "objectId": "content_42",
+  "payload": {
+    "title": "Example Work Item",
+    "destination": "external-service",
+    "requiresApproval": true
+  }
+}
