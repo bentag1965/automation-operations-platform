@@ -1,0 +1,34 @@
+{
+  "patterns": [
+    {
+      "name": "social-publishing-dispatcher",
+      "observedExecutionScale": "1800+",
+      "capabilities": ["queue", "structured-json", "external-api", "outcome-persistence"]
+    },
+    {
+      "name": "content-to-social-queue",
+      "observedExecutionScale": "500+",
+      "capabilities": ["polling", "fan-out", "multi-channel", "deduplication"]
+    },
+    {
+      "name": "approved-production-worker",
+      "observedExecutionScale": "dozens",
+      "capabilities": ["approval-gate", "asset-production", "polling", "durable-state"]
+    },
+    {
+      "name": "media-production-pipeline",
+      "observedExecutionScale": "multi-stage",
+      "capabilities": ["tts", "async-render", "polling", "archive", "audit"]
+    },
+    {
+      "name": "project-sync-worker",
+      "observedExecutionScale": "repeatable",
+      "capabilities": ["claim-check", "idempotency", "reconcile", "external-api"]
+    },
+    {
+      "name": "callable-api-shell",
+      "observedExecutionScale": "on-demand",
+      "capabilities": ["typed-input", "typed-output", "subscenario", "api-abstraction"]
+    }
+  ]
+}
