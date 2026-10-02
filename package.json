@@ -6,9 +6,12 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/**/*.test.ts",
-    "start:api": "tsx src/runtime/api.ts",
-    "start:worker": "tsx src/runtime/worker.ts",
-    "db:migrate": "tsx src/runtime/migrate.ts"
+    "start:api": "node dist/runtime/api.js",
+    "start:worker": "node dist/runtime/worker.js",
+    "db:migrate": "node dist/runtime/migrate.js",
+    "build": "tsc -p tsconfig.build.json",
+    "dev:api": "tsx src/runtime/api.ts",
+    "dev:worker": "tsx src/runtime/worker.ts"
   },
   "devDependencies": {
     "typescript": "^5.6.3",
