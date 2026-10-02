@@ -1,0 +1,16 @@
+.git
+.github
+node_modules
+dist
+coverage
+.env
+.env.*
+!.env.example
+.terraform
+**/.terraform
+*.tfstate
+*.tfstate.*
+docs
+examples
+observability/grafana
+*.log
