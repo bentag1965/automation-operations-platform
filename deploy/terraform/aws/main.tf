@@ -161,10 +161,10 @@ resource "aws_db_instance" "postgres" {
   publicly_accessible    = false
   multi_az               = false
 
-  backup_retention_period      = 7
-  auto_minor_version_upgrade   = true
-  deletion_protection          = var.deletion_protection
-  skip_final_snapshot          = var.skip_final_snapshot
+  backup_retention_period    = 7
+  auto_minor_version_upgrade = true
+  deletion_protection        = var.deletion_protection
+  skip_final_snapshot        = var.skip_final_snapshot
 
   tags = {
     Name = "${local.name}-postgres"
