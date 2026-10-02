@@ -147,6 +147,7 @@ The Docker stack starts PostgreSQL, the API, and a background worker.
 
 - [Local end-to-end demo](docs/local-demo.md)
 - [Validated runtime evidence](docs/validation-evidence.md)
+- [Local observability demo](docs/observability-demo.md)
 
 The demo has been exercised through success, duplicate/idempotent delivery, human approval, transient retry, dead-letter handling, audit history, and live workflow metrics.
 
