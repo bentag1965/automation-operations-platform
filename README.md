@@ -180,7 +180,10 @@ This reference implementation is checked in GitHub Actions. CI runs the TypeScri
 - [Observability and service signals](docs/observability.md)
 - [Incident runbook](docs/runbook.md)
 - [Example incident scenario](docs/incident-scenario.md)
+- [Simulated incident postmortem](docs/simulated-postmortem.md)
+- [Repeatable incident drill](docs/incident-drill.md)
 - [Metrics catalog](examples/metrics-catalog.json)
+- Prometheus alert rules for backlog, queue age, retries, dead letters, and success ratio
 
 ## Production Automation Experience
 
