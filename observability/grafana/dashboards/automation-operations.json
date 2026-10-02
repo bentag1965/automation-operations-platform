@@ -44,7 +44,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "workflow_count{status=\"succeeded\"} or vector(0)"
+          "expr": "sum(workflow_count{status=\"succeeded\"}) or vector(0)"
         }
       ]
     },
@@ -132,7 +132,13 @@
           "expr": "workflow_queue_depth",
           "legendFormat": "queued"
         }
-      ]
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0
+        },
+        "overrides": []
+      }
     },
     {
       "type": "stat",
@@ -174,7 +180,13 @@
           "refId": "A",
           "expr": "workflow_avg_completion_seconds"
         }
-      ]
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      }
     },
     {
       "type": "stat",
@@ -195,7 +207,13 @@
           "refId": "A",
           "expr": "workflow_avg_approval_wait_seconds"
         }
-      ]
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      }
     },
     {
       "type": "stat",
@@ -215,6 +233,108 @@
         {
           "refId": "A",
           "expr": "workflow_avg_adapter_latency_seconds"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Retry Scheduled",
+      "id": 11,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 18
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "workflow_retry_scheduled"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Processing",
+      "id": 12,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 18
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "workflow_processing"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Oldest Queued Age",
+      "id": 13,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 18
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "workflow_oldest_queued_age_seconds"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Success Ratio",
+      "id": 14,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 18
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(workflow_count{status=\"succeeded\"}) / clamp_min(workflow_total, 1)"
         }
       ]
     }
@@ -236,5 +356,5 @@
   "timezone": "browser",
   "title": "Automation Operations Platform",
   "uid": "automation-operations",
-  "version": 1
+  "version": 2
 }
