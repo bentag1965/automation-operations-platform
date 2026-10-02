@@ -1,10 +1,19 @@
 import { Pool, type PoolClient, type QueryResultRow } from "pg";
 
-export const pool = new Pool({
-  connectionString:
-    process.env.DATABASE_URL ??
-    "postgresql://automation:automation@localhost:5432/automation",
-});
+const hasPgEnvironment =
+  process.env.PGHOST ||
+  process.env.PGPORT ||
+  process.env.PGDATABASE ||
+  process.env.PGUSER ||
+  process.env.PGPASSWORD;
+
+export const pool = new Pool(
+  process.env.DATABASE_URL
+    ? { connectionString: process.env.DATABASE_URL }
+    : hasPgEnvironment
+      ? {}
+      : { connectionString: "postgresql://automation:automation@localhost:5432/automation" }
+);
 
 export async function withTransaction<T>(
   work: (client: PoolClient) => Promise<T>
