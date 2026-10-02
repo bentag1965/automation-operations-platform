@@ -200,3 +200,22 @@ The reference architecture is informed by a larger Make-based automation estate 
 - [Production workflow patterns](docs/production-workflow-patterns.md)
 - [Visual orchestration vs. typed workflow services](docs/visual-orchestration-vs-code.md)
 - [Interview guide](docs/interview-guide.md)
+
+
+## Infrastructure as Code
+
+A reference AWS deployment is defined in [deploy/terraform/aws](deploy/terraform/aws).
+
+It demonstrates:
+
+- VPC and subnet design
+- Application Load Balancer
+- ECS/Fargate API and worker services
+- private RDS PostgreSQL
+- ECR image repository
+- CloudWatch logging
+- Secrets Manager-backed database credentials
+- one-off database migration task
+- Terraform CI validation
+
+The Terraform is intended to be reviewed and planned safely before any deployment. Running `terraform apply` would create billable AWS resources.
