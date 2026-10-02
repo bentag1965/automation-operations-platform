@@ -194,3 +194,9 @@ The reference architecture is informed by a larger Make-based automation estate 
 
 - [Make vs. TypeScript dispatcher](docs/make-vs-code-dispatcher.md)
 - [AI workflow engineering: Notion + ChatGPT + Claude + Make](docs/ai-workflow-engineering.md)
+
+## Workflow Engineering Experience
+
+- [Production workflow patterns](docs/production-workflow-patterns.md)
+- [Visual orchestration vs. typed workflow services](docs/visual-orchestration-vs-code.md)
+- [Interview guide](docs/interview-guide.md)
