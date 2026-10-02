@@ -7,5 +7,6 @@ RUN npm install
 
 COPY tsconfig.json ./
 COPY src ./src
+COPY database ./database
 
 CMD ["npm", "run", "start:api"]
