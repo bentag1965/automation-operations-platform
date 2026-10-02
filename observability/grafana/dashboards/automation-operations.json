@@ -334,7 +334,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "sum(workflow_count{status=\"succeeded\"}) / clamp_min(workflow_total, 1)"
+          "expr": "sum(workflow_count{status=\"succeeded\"}) / clamp_min(sum(workflow_count), 1)"
         }
       ]
     }
@@ -356,5 +356,5 @@
   "timezone": "browser",
   "title": "Automation Operations Platform",
   "uid": "automation-operations",
-  "version": 2
+  "version": 3
 }
