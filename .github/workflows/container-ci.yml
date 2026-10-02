@@ -1,0 +1,45 @@
+name: Container CI
+
+on:
+  push:
+    paths:
+      - "Dockerfile"
+      - ".dockerignore"
+      - "docker-compose.yml"
+      - "docker-compose.production.yml"
+      - ".env.production.example"
+      - "package.json"
+      - "tsconfig*.json"
+      - "src/**"
+      - "database/**"
+      - ".github/workflows/container-ci.yml"
+  pull_request:
+    paths:
+      - "Dockerfile"
+      - ".dockerignore"
+      - "docker-compose.yml"
+      - "docker-compose.production.yml"
+      - ".env.production.example"
+      - "package.json"
+      - "tsconfig*.json"
+      - "src/**"
+      - "database/**"
+      - ".github/workflows/container-ci.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - run: npm install
+      - run: npm run build
+      - run: npm test
+      - run: docker build -t automation-operations-platform:ci .
+      - run: |
+          POSTGRES_PASSWORD=ci-db-password           GRAFANA_ADMIN_PASSWORD=ci-grafana-password           docker compose -f docker-compose.production.yml config >/dev/null
