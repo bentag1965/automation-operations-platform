@@ -151,6 +151,13 @@ The Docker stack starts PostgreSQL, the API, and a background worker.
 
 The demo has been exercised through success, duplicate/idempotent delivery, human approval, transient retry, dead-letter handling, audit history, and live workflow metrics.
 
+
+## Runtime Observability Dashboard
+
+![Automation Operations Platform Grafana dashboard](docs/images/automation-operations-dashboard.png)
+
+The local reference stack includes Prometheus metrics and a provisioned Grafana dashboard showing workflow totals, success and dead-letter counts, retries, queue depth, approval wait, adapter latency, and success ratio.
+
 ## Planned Enhancements
 
 - Webhook signature verification examples
