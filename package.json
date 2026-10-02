@@ -7,7 +7,8 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/**/*.test.ts",
     "start:api": "tsx src/runtime/api.ts",
-    "start:worker": "tsx src/runtime/worker.ts"
+    "start:worker": "tsx src/runtime/worker.ts",
+    "db:migrate": "tsx src/runtime/migrate.ts"
   },
   "devDependencies": {
     "typescript": "^5.6.3",
