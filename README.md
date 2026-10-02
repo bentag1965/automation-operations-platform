@@ -137,12 +137,23 @@ Credentials belong in environment variables or a secret manager.
 
 This is a portfolio-safe implementation. It does not contain production credentials, customer data, proprietary business logic, private webhook URLs, or commercial workflow configuration.
 
+## Run It Locally
+
+```powershell
+docker compose up -d --build
+```
+
+The Docker stack starts PostgreSQL, the API, and a background worker.
+
+- [Local end-to-end demo](docs/local-demo.md)
+- [Validated runtime evidence](docs/validation-evidence.md)
+
+The demo has been exercised through success, duplicate/idempotent delivery, human approval, transient retry, dead-letter handling, audit history, and live workflow metrics.
+
 ## Planned Enhancements
 
-- Concrete queue implementation
 - Webhook signature verification examples
 - Rate-limit-aware retry policy
-- Metrics and health endpoints
 - Correlation IDs
 - OpenTelemetry examples
 
