@@ -1,0 +1,27 @@
+name: Terraform CI
+
+on:
+  push:
+    paths:
+      - 'deploy/terraform/**'
+      - '.github/workflows/terraform-ci.yml'
+  pull_request:
+    paths:
+      - 'deploy/terraform/**'
+      - '.github/workflows/terraform-ci.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: deploy/terraform/aws
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.8
+      - run: terraform fmt -check
+      - run: terraform init -backend=false
+      - run: terraform validate
