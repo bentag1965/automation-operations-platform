@@ -1,0 +1,46 @@
+groups:
+  - name: automation-operations
+    rules:
+      - alert: WorkflowQueueBacklog
+        expr: workflow_queue_depth > 10
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Workflow queue backlog is elevated"
+          description: "More than 10 workflows have remained queued for at least 2 minutes."
+
+      - alert: WorkflowQueueAgeHigh
+        expr: workflow_oldest_queued_age_seconds > 300
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Oldest queued workflow exceeds five minutes"
+          description: "Queued work is aging and may indicate worker or dependency degradation."
+
+      - alert: WorkflowDeadLettersPresent
+        expr: workflow_dead_letter > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Dead-letter workflows require operator review"
+          description: "One or more workflows have exhausted retry handling."
+
+      - alert: WorkflowRetryPressure
+        expr: increase(workflow_retry_events_total[5m]) > 10
+        labels:
+          severity: warning
+        annotations:
+          summary: "Retry activity is elevated"
+          description: "More than 10 retry events occurred during the last five minutes."
+
+      - alert: WorkflowSuccessRatioLow
+        expr: (sum(workflow_count{status="succeeded"}) / clamp_min(sum(workflow_count), 1)) < 0.90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Workflow success ratio is below 90 percent"
+          description: "The current workflow population indicates elevated terminal failure."
