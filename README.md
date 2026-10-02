@@ -219,3 +219,29 @@ It demonstrates:
 - Terraform CI validation
 
 The Terraform is intended to be reviewed and planned safely before any deployment. Running `terraform apply` would create billable AWS resources.
+
+
+## Deployment Options
+
+This repository now demonstrates two deployment layers:
+
+### Production-style Docker
+
+[Production Docker guide](docs/production-docker.md)
+
+The hardened Compose stack demonstrates:
+
+- multi-stage builds
+- compiled JavaScript runtime
+- non-root application containers
+- health checks and restart policies
+- externalized credentials
+- read-only application filesystems
+- reduced Linux capabilities
+- internal database networking
+
+### AWS Infrastructure as Code
+
+[AWS Terraform reference deployment](deploy/terraform/aws/README.md)
+
+The Terraform layer maps the same application roles to ECS/Fargate, RDS PostgreSQL, ECR, an Application Load Balancer, CloudWatch, and Secrets Manager-backed database credentials.
