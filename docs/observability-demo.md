@@ -90,3 +90,23 @@ Then watch Grafana update every five seconds.
 ## Portfolio Purpose
 
 This dashboard turns the system from a code sample into an operable reference application. It demonstrates that runtime behavior is measurable, visible, and tied to the workflow state model.
+
+## Generate Demo Traffic
+
+After the stack is running, create a repeatable mix of successful, approval-required, and transient-failure workflows:
+
+```powershell
+.\examples\Generate-DemoTraffic.ps1
+```
+
+Defaults:
+
+- 8 successful workflows
+- 2 approval-required workflows, automatically approved for the demo
+- 2 transient-failure workflows that eventually exercise retry/dead-letter behavior
+
+Override the mix if desired:
+
+```powershell
+.\examples\Generate-DemoTraffic.ps1 -SuccessCount 15 -ApprovalCount 4 -TransientFailureCount 3
+```
